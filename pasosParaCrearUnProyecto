@@ -1,0 +1,18 @@
+ 1. crear un directorio y acceder a el 
+ 2 establecer el directorio como predeterminado con 
+ npm init -y // -y: set with package.json
+ 3 instalamos express 
+ npm i express
+ 4 instalamos nodomon
+ npm i -D nodemon //// -D: set as a development dependency
+ 5 index para la configuracion
+ 6 ponemos en el package.json que ejecute el servidor con nodemon
+ {
+"main": "server.js",
+"scripts": {
+"dev": "nodemon server.js"
+},
+}
+
+7 ejecutamos
+npm run dev
