@@ -1,0 +1,7 @@
+node_modules/
+.env
+*.log
+.npm
+
+#para tener un mejor gitignore hay plantillas en:
+#https://www.toptal.com/developers/gitignore/

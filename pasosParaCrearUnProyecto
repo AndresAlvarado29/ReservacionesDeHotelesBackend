@@ -16,3 +16,8 @@
 
 7 ejecutamos
 npm run dev
+
+Usar variables de entorno
+para usarlas se va a instalar dotenv
+npm install dotenv 
+para ocultar datos que no quiera que vean. 
