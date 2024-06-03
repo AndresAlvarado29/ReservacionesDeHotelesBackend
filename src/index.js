@@ -11,7 +11,7 @@ const configuracionApi = (app)=>{
 const init = () => {
     const app = express() //instancia de express
     configuracionApi(app) //configura api
-    app.listen(globalConstants.PORT,() => console.log('La aplicaciion se esta ejecutando en el puerto:'+globalConstants.PORT));
+    app.listen(globalConstants.PORT,() => console.log('La aplicacion se esta ejecutando en el puerto:'+globalConstants.PORT));
 }
 
 init();
