@@ -21,3 +21,9 @@ Usar variables de entorno
 para usarlas se va a instalar dotenv
 npm install dotenv 
 para ocultar datos que no quiera que vean. 
+
+para usar la base de datos se usa pg
+npm install pg
+
+para ver mensajes por consola de las solicitudes que han hecho
+npm install morgan

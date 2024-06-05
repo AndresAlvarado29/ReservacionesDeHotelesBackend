@@ -1,8 +1,10 @@
-//aqui van todas las rutas y se van a conectar
+//aqui van todas las rutas
 
 const { Router } = require('express');
+const usuarioRoutes = require('./usuario.route')
 
-const rutas_init=()=>{
+
+const rutas_init = () => {
     const router = Router()
 
     router.use("/usuarios", usuarioRoutes)
