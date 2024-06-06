@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/database');
-const FacturaCabecera = require('./FacturaCabecera');
-const Reserva = require('./Reserva');
+const sequelize = require('../config/database.js');
+const FacturaCabecera = require('./FacturaCabecera.js');
+const Reserva = require('./Reserva.js');
 
 class FacturaDetalle extends Model {}
 

@@ -27,3 +27,6 @@ npm install pg
 
 para ver mensajes por consola de las solicitudes que han hecho
 npm install morgan
+
+para user un orm en este caso sequelize
+npm install sequelize pg pg-hstore

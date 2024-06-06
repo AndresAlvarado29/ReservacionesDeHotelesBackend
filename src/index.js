@@ -1,9 +1,9 @@
-const express = require('express')
-const Sequelize = require('sequelize')
+const express = require('express') 
 const morgan = require('morgan')
 const globalConstants = require('./const/globalConstants')
 const routerConfig = require('./routes/index.routes')
-const { sequelize } = require('./database/dataBase')
+const  sequelize  = require('./database/dataBase')
+const { Habitacion, Reserva, FacturaCabecera, FacturaDetalle, Cliente, Usuario } = require('./associations/associations.js');
 
 //reconoce los .json y recive los formularios para post o get
 const configuracionApi = (app) => {
@@ -18,9 +18,8 @@ const configuracionRouter = (app) => {
 
 
 async function init() {
-    //prueba de coneccion
     try {
-        await sequelize.authenticate();
+        await sequelize.sync();
         console.log("Conexion establecida")
         //instancia de express
         const app = express()
