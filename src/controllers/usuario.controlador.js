@@ -1,4 +1,4 @@
-const { pool } = require('../dataBase.js')
+const { pool } = require('../database/dataBase.js')
 
 module.exports = {
 
