@@ -1,7 +1,7 @@
- 1. crear un directorio y acceder a el 
- 2 establecer el directorio como predeterminado con 
+ 1. crear un directorio y acceder a el
+ 2 establecer el directorio como predeterminado con
  npm init -y // -y: set with package.json
- 3 instalamos express 
+ 3 instalamos express
  npm i express
  4 instalamos nodomon
  npm i -D nodemon //// -D: set as a development dependency
@@ -14,13 +14,23 @@
 },
 }
 
-7 ejecutamos
+7 creamos un archivo .env en la raíz del proyecto que contenga los siguientes
+campos
+
+PORT=
+USER_DB=
+PASSWORD_DB=
+HOST_DB=
+DATABASE=
+PORT_DB=
+
+8 ejecutamos
 npm run dev
 
 Usar variables de entorno
 para usarlas se va a instalar dotenv
-npm install dotenv 
-para ocultar datos que no quiera que vean. 
+npm install dotenv
+para ocultar datos que no quiera que vean.
 
 para usar la base de datos se usa pg
 npm install pg

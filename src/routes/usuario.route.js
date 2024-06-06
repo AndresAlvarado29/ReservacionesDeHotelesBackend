@@ -1,12 +1,16 @@
-const router = require("express").Router()
+import express from "express";
 
-const usuarioControlador = require('../controllers/usuario.controlador')
+let router = express.Router();
 
-router.get('/', usuarioControlador.prueba);
-router.post('/', usuarioControlador.crear);
-router.get('/', usuarioControlador.listar);
-router.get('/:idUsuario', usuarioControlador.listarInfo);
-router.get('/:idUsuario', usuarioControlador.borrar);
-router.put('/:idUsuario', usuarioControlador.actualizar);
+export class usuarioRoutes{};
 
-module.exports = router
+import { prueba, crear ,listar, listarInfo, borrar, actualizar } from '../controllers/usuario.controlador.js';
+
+router.get('/', prueba);
+router.post('/', crear);
+router.get('/', listar);
+router.get('/:idUsuario', listarInfo);
+router.delete('/:idUsuario', borrar);
+router.put('/:idUsuario', actualizar);
+
+export { router };

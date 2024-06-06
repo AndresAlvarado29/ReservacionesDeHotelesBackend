@@ -1,9 +1,9 @@
-const Habitacion = require('./models/Habitacion');
-const Reserva = require('./models/Reserva');
-const FacturaCabecera = require('./models/FacturaCabecera');
-const FacturaDetalle = require('./models/FacturaDetalle');
-const Cliente = require('./models/Cliente');
-const Usuario = require('./models/Usuario');
+import { Habitacion } from '../models/habitacion.js';
+import { Reserva } from '../models/reserva.js';
+import { FacturaCabecera } from '../models/facturaCabecera.js';
+import { FacturaDetalle } from '../models/facturaDetalle.js';
+import { Cliente } from '../models/cliente.js';
+import { Usuario } from '../models/usuario.js';
 
 // Definir las relaciones
 Cliente.hasMany(Reserva, { foreignKey: 'cliente_codigo' });
@@ -24,7 +24,8 @@ Reserva.belongsTo(Habitacion, { foreignKey: 'habitacion_codigo' });
 Usuario.hasMany(Cliente, { foreignKey: 'usuario_codigo' });
 Cliente.belongsTo(Usuario, { foreignKey: 'usuario_codigo' });
 
-module.exports = {
+
+export {
   Habitacion,
   Reserva,
   FacturaCabecera,

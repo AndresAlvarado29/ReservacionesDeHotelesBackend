@@ -1,9 +1,7 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/database.js');
-const FacturaCabecera = require('./FacturaCabecera.js');
-const Reserva = require('./Reserva.js');
+import { Model, DataTypes } from 'sequelize';
+import { sequelize } from '../database/database.js';
 
-class FacturaDetalle extends Model {}
+export class FacturaDetalle extends Model {}
 
 FacturaDetalle.init({
   detalle_id: {

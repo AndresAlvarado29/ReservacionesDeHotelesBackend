@@ -1,7 +1,7 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/database.js');
+import { Model, DataTypes } from 'sequelize';
+import { sequelize } from '../database/database.js';
 
-class Habitacion extends Model {}
+export class Habitacion extends Model {}
 
 Habitacion.init({
   codigo_habitacion: {
@@ -30,7 +30,6 @@ Habitacion.init({
   }
 }, {
   sequelize,
-  modelName: 'Habitacion'
+  modelName: 'habitacion'
 });
 
-module.exports = Habitacion;

@@ -1,10 +1,9 @@
 //aqui van todas las rutas
 
-const { Router } = require('express');
-const usuarioRoutes = require('./usuario.route')
+import { Router } from 'express';
+import { usuarioRoutes } from './usuario.route.js';
 
-
-const rutas_init = () => {
+export const rutas_init = () => {
     const router = Router()
 
     router.use("/usuarios", usuarioRoutes)
@@ -12,4 +11,4 @@ const rutas_init = () => {
     return router
 }
 
-module.exports = { rutas_init }
+//module.exports = { rutas_init }

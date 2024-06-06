@@ -1,7 +1,19 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/database.js');
-const FacturaCabecera = require('./FacturaCabecera.js');
-const Reserva = require('./Reserva.js');
+//const sequelize = require('../database/database.js');
+const FacturaCabecera = require('./facturaCabecera.js');
+const Reserva = require('./reserva.js');
+
+const Sequelize = require('sequelize');
+
+const sequelize = new Sequelize({
+    dialect: 'postgres',
+    database: 'gestionhoteles',
+    user: 'tano',
+    password: 'tano',
+    host: 'localhost',
+    port: 5432,
+    ssl: true,
+});
 
 class FacturaDetalle extends Model {}
 

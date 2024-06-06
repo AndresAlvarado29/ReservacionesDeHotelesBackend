@@ -1,9 +1,10 @@
-const express = require('express') 
-const morgan = require('morgan')
-const globalConstants = require('./const/globalConstants')
-const routerConfig = require('./routes/index.routes')
-const  sequelize  = require('./database/dataBase')
-const { Habitacion, Reserva, FacturaCabecera, FacturaDetalle, Cliente, Usuario } = require('./associations/associations.js');
+import 'dotenv/config.js';
+import express from 'express';
+import morgan from 'morgan';
+import { rutas_init } from './routes/index.routes.js';
+import { sequelize } from './database/database.js';
+//import { Habitacion, Reserva, FacturaCabecera, FacturaDetalle, Cliente, Usuario } from './associations/associations.js';
+import { Habitacion } from './associations/associations.js';
 
 //reconoce los .json y recive los formularios para post o get
 const configuracionApi = (app) => {
@@ -13,9 +14,8 @@ const configuracionApi = (app) => {
 }
 
 const configuracionRouter = (app) => {
-    app.use('/api/', routerConfig.rutas_init())
+    app.use('/api/', rutas_init())
 }
-
 
 async function init() {
     try {
@@ -28,11 +28,10 @@ async function init() {
         //ruta
         configuracionRouter(app)
         //puerto
-        app.listen(globalConstants.PORT, () => console.log('La aplicacion se esta ejecutando en el puerto:' + globalConstants.PORT));
+        app.listen(process.env.PORT, () => console.log('La aplicacion se esta ejecutando en el puerto:' + process.env.PORT));
     } catch (error) {
         console.error("Error en la conexion con la base de datos", error);
     }
-
 }
 
 init();
