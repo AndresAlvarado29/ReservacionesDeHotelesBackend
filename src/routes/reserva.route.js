@@ -1,12 +1,15 @@
-const router = require("express").Router()
+import express from "express";
 
-const reservaControlador = require('../controllers/reserva.controlador')
+let router = express.Router();
 
+export class usuarioRoutes {};
 
-router.post('/', reservaControlador.crear);
-router.get('/', reservaControlador.listar);
-router.get('/:idReserva', reservaControlador.listarInfo);
-router.delete('/:idReserva', reservaControlador.borrar);
-router.put('/:idReserva', reservaControlador.actualizar);
+import { crear, listar, listarInfo, borrar, actualizar } from '../controllers/reserva.controlador.js';
 
-module.exports = router
+router.post('/', crear);
+router.get('/', listar);
+router.get('/:idReserva', listarInfo);
+router.delete('/:idReserva', borrar);
+router.put('/:idReserva', actualizar);
+
+export { router };
