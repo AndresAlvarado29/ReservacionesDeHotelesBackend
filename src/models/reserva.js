@@ -2,6 +2,7 @@ import { Model, DataTypes } from 'sequelize';
 import sequelize from '../database/database.js';
 import { FacturaCabecera } from './facturaCabecera.js';
 import { Cliente } from './cliente.js';
+import { Habitacion } from './habitacion.js';
 
 class Reserva extends Model {}
 
@@ -42,7 +43,7 @@ Reserva.init({
       key: 'codigo_habitacion'
     }
   },
-  codigo_cliente: {
+  cliente_codigo: {
     type: DataTypes.INTEGER,
     references: {
       model: Cliente,
@@ -55,6 +56,6 @@ Reserva.init({
 });
 
 Reserva.belongsTo(Habitacion, { foreignKey: 'codigo_habitacion' });
-Reserva.belongsTo(Cliente, { foreignKey: 'codigo_cliente' });
+Reserva.belongsTo(Cliente, { foreignKey: 'cliente_codigo' });
 
 module.exports = Reserva;
