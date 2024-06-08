@@ -1,12 +1,15 @@
-const router = require("express").Router()
+import express from "express";
 
-const habitacionControlador = require('../controllers/habitacion.controlador')
+let router = express.Router();
 
+export class habitacionRoutes {};
 
-router.post('/', habitacionControlador.crear);
-router.get('/', habitacionControlador.listar);
-router.get('/:idHabitacion', habitacionControlador.listarInfo);
-router.delete('/:idHabitacion', habitacionControlador.borrar);
-router.put('/:idHabitacion', habitacionControlador.actualizar);
+import { crear, listar, listarInfo, borrar, actualizar } from '../controllers/habitacion.controlador.js';
 
-module.exports = router
+router.post('/', crear);
+router.get('/', listar);
+router.get('/:idHabitacion', listarInfo);
+router.delete('/:idHabitacion', borrar);
+router.put('/:idHabitacion', actualizar);
+
+export { router };
