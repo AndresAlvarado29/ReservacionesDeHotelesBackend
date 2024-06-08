@@ -1,5 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../database/database.js');
+import { Usuario } from './usuario.js';
 
 class Cliente extends Model {}
 
@@ -49,4 +50,5 @@ Cliente.init({
   modelName: 'Cliente'
 });
 
+Cliente.belongsTo(Usuario, { foreignKey: 'usuario_codigo' });
 module.exports = Cliente;
