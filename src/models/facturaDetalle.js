@@ -23,11 +23,7 @@ FacturaDetalle.init({
     primaryKey: true,
     autoIncrement: true
   },
-  cantidad: {
-    type: DataTypes.INTEGER,
-    allowNull: false
-  },
-  precio_unitario: {
+  iva: {
     type: DataTypes.DECIMAL,
     allowNull: false
   },
