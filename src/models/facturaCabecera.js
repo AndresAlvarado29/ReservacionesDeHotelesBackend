@@ -30,7 +30,7 @@ FacturaCabecera.init({
     type: DataTypes.DECIMAL,
     allowNull: false
   },
-  cliente_codigo: {
+  codigo_cliente: {
     type: DataTypes.INTEGER,
     references: {
       model: Cliente,
@@ -42,6 +42,6 @@ FacturaCabecera.init({
   modelName: 'CabeceraDetalle'
 });
 
-FacturaCabecera.belongsTo(Cliente, { foreignKey: 'cliente_codigo' });
+FacturaCabecera.belongsTo(Cliente, { foreignKey: 'codigo_cliente' });
 
 module.exports = FacturaCabecera;
