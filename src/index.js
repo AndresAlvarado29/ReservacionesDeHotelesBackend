@@ -5,8 +5,6 @@ import { rutas_init } from './routes/index.routes.js';
 import { sequelize } from './database/database.js';
 import { Usuario, Cliente, Habitacion, Reserva, FacturaDetalle,
     FacturaCabecera } from './associations/associations.js';
-//import { Habitacion } from './associations/associations.js';
-//import { Usuario } from './associations/associations.js';
 
 //reconoce los .json y recive los formularios para post o get
 const configuracionApi = (app) => {
