@@ -5,7 +5,7 @@ import { Cliente } from './cliente.js';
 export class FacturaCabecera extends Model {}
 
 FacturaCabecera.init({
-    codigo_cabecera: {
+    codigo_factura: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
@@ -40,7 +40,7 @@ FacturaCabecera.init({
 }, {
     sequelize,
     freezeTableName: true,
-    modelName: 'facturasCabecera'
+    modelName: 'facturascabecera'
 });
 
 FacturaCabecera.belongsTo(Cliente, { foreignKey: 'cliente_codigo' });

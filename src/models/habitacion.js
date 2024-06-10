@@ -6,7 +6,8 @@ export class Habitacion extends Model {}
 Habitacion.init({
     codigo_habitacion: {
         type: DataTypes.INTEGER,
-        primaryKey: true
+        primaryKey: true,
+        autoIncrement: true
     },
     num_habitacion: {
         type: DataTypes.INTEGER,

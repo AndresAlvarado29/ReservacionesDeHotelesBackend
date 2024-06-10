@@ -27,7 +27,7 @@ FacturaDetalle.init({
         }
     },
     factura_codigo: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         references: {
             model: FacturaCabecera,
             key: 'codigo_factura'
@@ -36,7 +36,7 @@ FacturaDetalle.init({
 }, {
     sequelize,
     freezeTableName: true,
-    modelName: 'facturaDetalles'
+    modelName: 'facturadetalles'
 });
 
 FacturaDetalle.belongsTo(Reserva, { foreignKey: 'reserva_codigo' });
