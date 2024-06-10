@@ -1,7 +1,7 @@
 import { Model, DataTypes } from 'sequelize';
 import { sequelize } from '../database/database.js';
 
-export class FacturaDetalle extends Model {}
+export class FacturaCabecera extends Model {}
 
 FacturaDetalle.init({
   detalle_id: {

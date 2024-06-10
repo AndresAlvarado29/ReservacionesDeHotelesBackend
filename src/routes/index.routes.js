@@ -1,14 +1,15 @@
 //aqui van todas las rutas
 
 import { Router } from 'express';
-import { usuarioRoutes } from './usuario.route.js';
+import { usuarioRouter } from './usuario.route.js';
+//import { habitacionRoutes } from './habitacion.route.js';
 
 export const rutas_init = () => {
     const router = Router()
 
-    router.use("/usuarios", usuarioRoutes)
+    router.use("/usuarios", usuarioRouter);
+    //router.use("/habitaciones", new habitacionRoutes);
 
-    return router
+    return router;
 }
 
-//module.exports = { rutas_init }

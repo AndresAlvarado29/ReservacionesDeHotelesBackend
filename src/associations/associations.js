@@ -1,9 +1,10 @@
+import { Usuario } from '../models/usuario.js';
+/*
+import { Cliente } from '../models/cliente.js';
 import { Habitacion } from '../models/habitacion.js';
 import { Reserva } from '../models/reserva.js';
 import { FacturaCabecera } from '../models/facturaCabecera.js';
 import { FacturaDetalle } from '../models/facturaDetalle.js';
-import { Cliente } from '../models/cliente.js';
-import { Usuario } from '../models/usuario.js';
 
 // Definir las relaciones
 Cliente.hasMany(Reserva, { foreignKey: 'cliente_codigo' });
@@ -23,13 +24,14 @@ Reserva.belongsTo(Habitacion, { foreignKey: 'habitacion_codigo' });
 
 Usuario.hasMany(Cliente, { foreignKey: 'usuario_codigo' });
 Cliente.belongsTo(Usuario, { foreignKey: 'usuario_codigo' });
-
+*/
 
 export {
-  Habitacion,
-  Reserva,
-  FacturaCabecera,
-  FacturaDetalle,
-  Cliente,
-  Usuario
+    Usuario,/*
+    Habitacion,
+    Reserva,
+    FacturaCabecera,
+    FacturaDetalle,
+    Cliente,
+  */
 };

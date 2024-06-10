@@ -1,9 +1,8 @@
 import { Sequelize } from 'sequelize';
-import { PostgresDialect } from '@sequelize/postgres';
 import pg from 'pg';
 
 export const sequelize = new Sequelize({
-    dialect: 'postgres',
+    dialect: 'postgresql',
     user: process.env.USER_DB,
     host: process.env.HOST_DB,
     password: process.env.PASSWORD_DB,
@@ -20,6 +19,6 @@ export const pool = new pg.Pool({
 });
 
 pool.query('SELECT NOW()').then(result => {
-    console.log(result)
+    console.log(result);
 });
 

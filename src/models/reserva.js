@@ -1,10 +1,9 @@
 import { Model, DataTypes } from 'sequelize';
-import sequelize from '../database/database.js';
-import { FacturaCabecera } from './facturaCabecera.js';
-import { Reserva } from './reserva.js';
+import { sequelize } from '../database/database.js';
 
-class FacturaDetalle extends Model {}
+export class Reserva extends Model {}
 
+/*
 FacturaDetalle.init({
   detalle_id: {
     type: DataTypes.INTEGER,
@@ -44,5 +43,4 @@ FacturaDetalle.init({
 
 FacturaDetalle.belongsTo(Reserva, { foreignKey: 'reserva_codigo' });
 FacturaDetalle.belongsTo(FacturaCabecera, { foreignKey: 'factura_numero' });
-
-module.exports = FacturaDetalle;
+*/

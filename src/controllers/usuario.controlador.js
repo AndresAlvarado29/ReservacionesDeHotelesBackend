@@ -1,57 +1,116 @@
 import { pool } from '../database/database.js';
+import { sequelize } from '../database/database.js';
+import { Usuario } from '../models/usuario.js';
 
 export class usuarioControlador {};
 
-  export let listar = async (req, res) => {
-    const { rows } = await pool.query("SELECT * FROM usuario");
-    res.json(rows);
-  };
-
-  export let crear = async (req, res) => {
-    const data = req.body;
-    console.log(data);
-    const { rows } = await pool.query("INSERT INTO usuario (datos de la tabla) values() RETURNING *",
-      [data.name])
-    return res.json(rows[0]);
-  };
-
-  export let listarInfo = async (req, res) => {
-    const { idUsuario } = req.params;
-    const { rows } = await pool.query('SELECT * FROM usuario WHERE id = $1', [idUsuario]);
-    if (rows.length == 0) {
-      return res.status(404).json({ message: "Usuario no encontrado" })
-    }
-    res.json(rows[0]);
-  };
-
-  export let prueba = async (req, res) => {
+export let listar = async (req, res) => {
     try {
-      console.log('ejecutando prueba')
-
-      res.json({
-        message: "Hola Mundo"
-      })
+        const result = await sequelize.transaction( async t => {
+            const usuarios = await Usuario.findAll( { transaction: t });
+            return usuarios;
+        });
+        res.json(result);
     } catch (error) {
-      console.log(error)
+        console.log(error);
     }
+};
 
-  };
-
-  export let borrar = async (req, res) => {
-    const { idUsuario } = req.params
-    const { rows, rowCount } = await pool.query('DELETE FROM usuario WHERE id = $1 RETURNING *', [idUsuario]);
-    console.log(rows)
-    if (rowCount === 0) {
-      return res.status(404).json({ message: "User not found" });
+export let crear = async (req, res) => {
+    const data = req.body;
+    console.log('Datos usuario: ', data);
+    try {
+        const result = await sequelize.transaction(async t => {
+            const usuario = await Usuario.create(data, { transaction: t });
+            return usuario;
+        });
+        console.log(result);
+        return res.json(result);
+    } catch (error) {
+        console.log(error);
+        return res.status(404).json({ message: "Error en el ingreso de datos del usuario" });
     }
-    return res.sendStatus(204)
-  };
+};
 
-  export let actualizar = async (req, res) => {
+export let listarInfo = async (req, res) => {
     const { idUsuario } = req.params;
-    const data = req.body
-    const { rows } = await pool.query('UPDATE usuario SET DATOS DEL USUARIO')
-    console.log(result)
-    return res.json(rows[0])
-  };
+    console.log('Buscando usuario con código: ', idUsuario);
+    try {
+        const result = await sequelize.transaction( async t => {
+            const usuarios = await Usuario.findAll({
+                where: {
+                    codigo_usuario: idUsuario
+                },
+            },
+            {
+                    transaction: t
+            });
+            return usuarios;
+        });
+        console.log(result);
+        if(result.length == 0){
+            return res.status(404).json({ message: "Usuario no encontrado" });
+        }
+        return res.json(result);
+    } catch (error) {
+        console.log(error);
+        return res.status(404).json({ message: "Usuario no encontrado" });
+    }
+};
+
+export let borrar = async (req, res) => {
+    const { idUsuario } = req.params;
+    console.log('Borrando el usuario con código: ', idUsuario);
+    try {
+        const result = await sequelize.transaction( async t => {
+            const usuarios = await Usuario.destroy({
+                where: {
+                    codigo_usuario: idUsuario
+                },
+            },
+            {
+                    transaction: t
+            });
+            return usuarios;
+        });
+        console.log(result);
+        if(result.length == 0){
+            return res.status(404).json({ message: "Usuario no encontrado" });
+        }
+        return res.status(200).json({ message: "Se eliminó el usuario con código " + idUsuario });
+    } catch (error) {
+        console.log(error);
+        return res.status(404).json({ message: "Usuario no encontrado" });
+    }
+};
+
+export let actualizar = async (req, res) => {
+    const { idUsuario } = req.params;
+    const data = req.body;
+    console.log("Actualizando el usuario con código: ", idUsuario);
+    try {
+        const result = await sequelize.transaction( async t => {
+            const usuarios = await Usuario.update(
+                data,
+                {
+                    where: {
+                        codigo_usuario: idUsuario
+                    },
+                },
+                {
+                    transaction: t
+                }
+            );
+            return usuarios;
+        });
+        console.log(result);
+        if(result.length == 0){
+            return res.status(404).json({ message: "Usuario no encontrado" });
+        }
+        return res.status(200).json({ message: "Se actualizó el usuario con código " + idUsuario });
+    } catch (error) {
+        console.log(error);
+        return res.status(404).json({ message: "Usuario no encontrado" });
+    }
+};
 

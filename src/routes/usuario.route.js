@@ -1,16 +1,13 @@
 import express from "express";
 
-let router = express.Router();
+let usuarioRouter = express.Router();
 
-export class usuarioRoutes{};
+import { crear ,listar, listarInfo, borrar, actualizar } from '../controllers/usuario.controlador.js';
 
-import { prueba, crear ,listar, listarInfo, borrar, actualizar } from '../controllers/usuario.controlador.js';
+usuarioRouter.post('/', crear);
+usuarioRouter.get('/', listar);
+usuarioRouter.get('/:idUsuario', listarInfo);
+usuarioRouter.delete('/:idUsuario', borrar);
+usuarioRouter.put('/:idUsuario', actualizar);
 
-router.get('/', prueba);
-router.post('/', crear);
-router.get('/', listar);
-router.get('/:idUsuario', listarInfo);
-router.delete('/:idUsuario', borrar);
-router.put('/:idUsuario', actualizar);
-
-export { router };
+export { usuarioRouter };

@@ -1,29 +1,28 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../database/database.js');
+import { Model, DataTypes } from 'sequelize';
+import { sequelize } from '../database/database.js';
 
-class Usuario extends Model {}
+export class Usuario extends Model {}
 
 Usuario.init({
-  codigo_usuario: {
-    type: DataTypes.INTEGER,
-    primaryKey: true,
-    autoIncrement: true
-  },
-  usuario: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  clave: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  email: {
-    type: DataTypes.STRING,
-    allowNull: false
-  }
+    codigo_usuario: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+    },
+    usuario: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    clave: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    email: {
+        type: DataTypes.STRING,
+        allowNull: false
+    }
 }, {
-  sequelize,
-  modelName: 'Usuario'
+        sequelize,
+        freezeTableName: true,
+        modelName: 'usuarios',
 });
-
-module.exports = Usuario;
