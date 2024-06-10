@@ -2,7 +2,8 @@ import express from "express";
 
 let reservaRouter = express.Router();
 
-import { crear, listar, listarInfo, borrar, actualizar } from '../controllers/reserva.controlador.js';
+import { crear, listar, listarInfo, borrar, actualizar }
+    from '../controllers/reserva.controlador.js';
 
 reservaRouter.post('/', crear);
 reservaRouter.get('/', listar);

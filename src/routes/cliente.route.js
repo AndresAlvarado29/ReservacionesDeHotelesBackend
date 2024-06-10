@@ -2,7 +2,8 @@ import express from "express";
 
 let clienteRouter = express.Router();
 
-import { crear, listar, listarInfo, borrar, actualizar } from '../controllers/cliente.controlador.js';
+import { crear, listar, listarInfo, borrar, actualizar }
+    from '../controllers/cliente.controlador.js';
 
 clienteRouter.post('/', crear);
 clienteRouter.get('/', listar);
