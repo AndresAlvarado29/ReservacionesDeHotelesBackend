@@ -1,46 +1,58 @@
 import { Model, DataTypes } from 'sequelize';
-import { sequelize } from '../database/database.js';
+import sequelize from '../database/database.js';
+import { Cliente } from './cliente.js';
+import { Habitacion } from './habitacion.js';
 
-export class Reserva extends Model {}
+class Reserva extends Model {}
 
-/*
-FacturaDetalle.init({
-  detalle_id: {
+Reserva.init({
+  reserva_id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true
   },
-  cantidad: {
+  fecha_entrada: {
+    type: DataTypes.DATE,
+    allowNull: false
+  },
+  fecha_salida: {
+    type: DataTypes.DATE,
+    allowNull: false
+  },
+  personas: {
     type: DataTypes.INTEGER,
     allowNull: false
   },
-  precio_unitario: {
-    type: DataTypes.DECIMAL,
+  numero_habitaciones: {
+    type: DataTypes.INTEGER,
     allowNull: false
   },
-  subtotal: {
-    type: DataTypes.DECIMAL,
+  numero_adultos: {
+    type: DataTypes.INTEGER,
     allowNull: false
   },
-  reserva_codigo: {
+  numero_ninios: {
+    type: DataTypes.INTEGER,
+    allowNull: false
+  },
+  codigo_habitacion: {
     type: DataTypes.INTEGER,
     references: {
-      model: Reserva,
-      key: 'codigo_reserva'
+      model: Habitacion,
+      key: 'codigo_habitacion'
     }
   },
-  factura_numero: {
-    type: DataTypes.STRING,
+  cliente_codigo: {
+    type: DataTypes.INTEGER,
     references: {
-      model: FacturaCabecera,
-      key: 'numero_factura'
+      model: Cliente,
+      key: 'codigo_cliente'
     }
   }
 }, {
   sequelize,
-  modelName: 'FacturaDetalle'
+  modelName: 'Reserva'
 });
 
-FacturaDetalle.belongsTo(Reserva, { foreignKey: 'reserva_codigo' });
-FacturaDetalle.belongsTo(FacturaCabecera, { foreignKey: 'factura_numero' });
-*/
+Reserva.belongsTo(Habitacion, { foreignKey: 'codigo_habitacion' });
+Reserva.belongsTo(Cliente, { foreignKey: 'cliente_codigo' });

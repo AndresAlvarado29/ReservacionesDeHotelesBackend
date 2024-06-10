@@ -9,27 +9,44 @@ Habitacion.init({
     primaryKey: true
   },
   num_habitacion: {
-    type: DataTypes.STRING(10),
-    allowNull: false
-  },
-  tipo_habitacion: {
-    type: DataTypes.STRING(50),
-    allowNull: false
-  },
-  precio_diario: {
-    type: DataTypes.DOUBLE,
-    allowNull: false
-  },
-  capacidad: {
     type: DataTypes.INTEGER,
     allowNull: false
   },
-  descripcion: {
-    type: DataTypes.STRING,
+  tipo_amueblado: {
+    type: DataTypes.STRING(50),
+    allowNull: false
+  },
+  alto: {
+    type: DataTypes.DECIMAL,
+    allowNull: false
+  },
+  ancho: {
+    type: DataTypes.DECIMAL,
+    allowNull: false
+  },
+  largo: {
+    type: DataTypes.DECIMAL,
+    allowNull: false
+  },
+  tipo_camas: {
+    type: DataTypes.STRING(50),
+    allowNull: false
+  },
+  num_camas: {
+    type: DataTypes.INTEGER,
+    allowNull: false
+  },
+  precio: {
+    type: DataTypes.DECIMAL,
     allowNull: true
-  }
+  },
+  estado: {
+    type: DataTypes.STRING(50),
+    allowNull: false
+  },
 }, {
   sequelize,
-  modelName: 'habitacion'
+  modelName: 'Habitacion'
 });
 
+module.exports = Habitacion;

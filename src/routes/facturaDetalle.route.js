@@ -1,11 +1,15 @@
-const router = require("express").Router()
+import express from "express";
 
-const facturaDetalleControlador = require('../controllers/facturaDetalle.controlador')
+let router = express.Router();
 
-router.post('/', facturaDetalleControlador.crear);
-router.get('/', facturaDetalleControlador.listar);
-router.get('/:idFacturaDetalle', facturaDetalleControlador.listarInfo);
-router.delete('/:idFacturaDetalle', facturaDetalleControlador.borrar);
-router.put('/:idFacturaDetalle', facturaDetalleControlador.actualizar);
+export class facturaDetalleRoutes {};
 
-module.exports = router
+import { crear, listar, listarInfo, borrar, actualizar } from '../controllers/facturaDetalle.controlador.js';
+
+router.post('/', crear);
+router.get('/', listar);
+router.get('/:idFacturaDetalle', listarInfo);
+router.delete('/:idFacturaDetalle', borrar);
+router.put('/:idFacturaDetalle', actualizar);
+
+export { router };
