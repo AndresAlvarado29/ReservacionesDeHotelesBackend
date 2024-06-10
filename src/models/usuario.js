@@ -22,7 +22,7 @@ Usuario.init({
         allowNull: false
     }
 }, {
-        sequelize,
-        freezeTableName: true,
-        modelName: 'usuarios',
+    sequelize,
+    freezeTableName: true,
+    modelName: 'usuarios',
 });

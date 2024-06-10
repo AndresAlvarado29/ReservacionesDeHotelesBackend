@@ -1,15 +1,13 @@
 import express from "express";
 
-let router = express.Router();
-
-export class facturaCabeceraRoutes {};
+let cabeceraRouter = express.Router();
 
 import { crear, listar, listarInfo, borrar, actualizar } from '../controllers/facturaCabecera.controlador.js';
 
-router.post('/', crear);
-router.get('/', listar);
-router.get('/:idFacturaCabecera', listarInfo);
-router.delete('/:idFacturaCabecera', borrar);
-router.put('/:idFacturaCabecera', actualizar);
+cabeceraRouter.post('/', crear);
+cabeceraRouter.get('/', listar);
+cabeceraRouter.get('/:idFacturaCabecera', listarInfo);
+cabeceraRouter.delete('/:idFacturaCabecera', borrar);
+cabeceraRouter.put('/:idFacturaCabecera', actualizar);
 
-export { router };
+export { cabeceraRouter };

@@ -1,15 +1,13 @@
 import express from "express";
 
-let router = express.Router();
-
-export class usuarioRoutes {};
+let reservaRouter = express.Router();
 
 import { crear, listar, listarInfo, borrar, actualizar } from '../controllers/reserva.controlador.js';
 
-router.post('/', crear);
-router.get('/', listar);
-router.get('/:idReserva', listarInfo);
-router.delete('/:idReserva', borrar);
-router.put('/:idReserva', actualizar);
+reservaRouter.post('/', crear);
+reservaRouter.get('/', listar);
+reservaRouter.get('/:idReserva', listarInfo);
+reservaRouter.delete('/:idReserva', borrar);
+reservaRouter.put('/:idReserva', actualizar);
 
-export { router };
+export { reservaRouter };

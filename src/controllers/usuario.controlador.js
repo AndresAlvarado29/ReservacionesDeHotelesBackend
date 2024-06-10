@@ -1,4 +1,3 @@
-import { pool } from '../database/database.js';
 import { sequelize } from '../database/database.js';
 import { Usuario } from '../models/usuario.js';
 
@@ -28,7 +27,9 @@ export let crear = async (req, res) => {
         return res.json(result);
     } catch (error) {
         console.log(error);
-        return res.status(404).json({ message: "Error en el ingreso de datos del usuario" });
+        return res.status(404).json(
+            { message: "Error en el ingreso de datos del usuario" }
+        );
     }
 };
 
@@ -77,7 +78,9 @@ export let borrar = async (req, res) => {
         if(result.length == 0){
             return res.status(404).json({ message: "Usuario no encontrado" });
         }
-        return res.status(200).json({ message: "Se eliminó el usuario con código " + idUsuario });
+        return res.status(200).json(
+            { message: "Se eliminó el usuario con código " + idUsuario }
+        );
     } catch (error) {
         console.log(error);
         return res.status(404).json({ message: "Usuario no encontrado" });
@@ -107,7 +110,9 @@ export let actualizar = async (req, res) => {
         if(result.length == 0){
             return res.status(404).json({ message: "Usuario no encontrado" });
         }
-        return res.status(200).json({ message: "Se actualizó el usuario con código " + idUsuario });
+        return res.status(200).json(
+            { message: "Se actualizó el usuario con código " + idUsuario }
+        );
     } catch (error) {
         console.log(error);
         return res.status(404).json({ message: "Usuario no encontrado" });

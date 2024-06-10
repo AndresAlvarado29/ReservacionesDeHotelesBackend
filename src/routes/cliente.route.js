@@ -1,15 +1,13 @@
 import express from "express";
 
-let router = express.Router();
-
-export class clienteRoutes {};
+let clienteRouter = express.Router();
 
 import { crear, listar, listarInfo, borrar, actualizar } from '../controllers/cliente.controlador.js';
 
-router.post('/', crear);
-router.get('/', listar);
-router.get('/:idCliente', listarInfo);
-router.delete('/:idCliente', borrar);
-router.put('/:idCliente', actualizar);
+clienteRouter.post('/', crear);
+clienteRouter.get('/', listar);
+clienteRouter.get('/:idCliente', listarInfo);
+clienteRouter.delete('/:idCliente', borrar);
+clienteRouter.put('/:idCliente', actualizar);
 
-export { router };
+export { clienteRouter };

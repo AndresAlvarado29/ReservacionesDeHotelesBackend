@@ -1,13 +1,13 @@
 import express from "express";
 
-let router = express.Router();
+let habitacionRouter = express.Router();
 
 import { crear, listar , listarInfo, borrar, actualizar } from '../controllers/habitacion.controlador.js';
 
-router.post('/', crear);
-router.get('/', listar);
-router.get('/:idHabitacion', listarInfo);
-router.delete('/:idHabitacion', borrar);
-router.put('/:idHabitacion', actualizar);
+habitacionRouter.post('/', crear);
+habitacionRouter.get('/', listar);
+habitacionRouter.get('/:idHabitacion', listarInfo);
+habitacionRouter.delete('/:idHabitacion', borrar);
+habitacionRouter.put('/:idHabitacion', actualizar);
 
-export { router };
+export { habitacionRouter };
