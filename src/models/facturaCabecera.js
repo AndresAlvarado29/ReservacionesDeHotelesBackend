@@ -5,7 +5,7 @@ import { Cliente } from './cliente.js';
 export class FacturaCabecera extends Model {}
 
 FacturaCabecera.init({
-    cabecera_id: {
+    codigo_cabecera: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true

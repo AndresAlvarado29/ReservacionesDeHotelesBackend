@@ -6,7 +6,7 @@ import { Reserva } from './reserva.js';
 export class FacturaDetalle extends Model {}
 
 FacturaDetalle.init({
-    detalle_id: {
+    codigo_detalle: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
@@ -26,11 +26,11 @@ FacturaDetalle.init({
             key: 'codigo_reserva'
         }
     },
-    factura_numero: {
+    factura_codigo: {
         type: DataTypes.STRING,
         references: {
             model: FacturaCabecera,
-            key: 'numero_factura'
+            key: 'codigo_factura'
         }
     }
 }, {
@@ -40,5 +40,5 @@ FacturaDetalle.init({
 });
 
 FacturaDetalle.belongsTo(Reserva, { foreignKey: 'reserva_codigo' });
-FacturaDetalle.belongsTo(FacturaCabecera, { foreignKey: 'factura_numero' });
+FacturaDetalle.belongsTo(FacturaCabecera, { foreignKey: 'factura_codigo' });
 

@@ -6,7 +6,7 @@ import { Habitacion } from './habitacion.js';
 export class Reserva extends Model {}
 
 Reserva.init({
-    reserva_id: {
+    codigo_reserva: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
