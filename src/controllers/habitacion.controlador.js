@@ -34,13 +34,13 @@ export let crear = async (req, res) => {
 };
 
 export let listarInfo = async (req, res) => {
-    const { idUsuario } = req.params;
-    console.log('Buscando habitacion con código: ', idUsuario);
+    const { idHabitacion } = req.params;
+    console.log('Buscando habitacion con código: ', idHabitacion);
     try {
         const result = await sequelize.transaction( async t => {
             const habitaciones = await Habitacion.findAll({
                 where: {
-                    codigo_habitacion: idUsuario
+                    codigo_habitacion: idHabitacion
                 },
             },
             {
@@ -60,13 +60,13 @@ export let listarInfo = async (req, res) => {
 };
 
 export let borrar = async (req, res) => {
-    const { idUsuario } = req.params;
-    console.log('Borrando la habitacion con código: ', idUsuario);
+    const { idHabitacion } = req.params;
+    console.log('Borrando la habitacion con código: ', idHabitacion);
     try {
         const result = await sequelize.transaction( async t => {
             const habitaciones = await Habitacion.destroy({
                 where: {
-                    codigo_habitacion: idUsuario
+                    codigo_habitacion: idHabitacion
                 },
             },
             {
@@ -75,11 +75,11 @@ export let borrar = async (req, res) => {
             return habitaciones;
         });
         console.log(result);
-        if(result.length == 0){
+        if(result == 0){
             return res.status(404).json({ message: "Habitacion no encontrada" });
         }
         return res.status(200).json(
-            { message: "Se eliminó la habitacion con código " + idUsuario }
+            { message: "Se eliminó la habitacion con código " + idHabitacion }
         );
     } catch (error) {
         console.log(error);
@@ -88,16 +88,16 @@ export let borrar = async (req, res) => {
 };
 
 export let actualizar = async (req, res) => {
-    const { idUsuario } = req.params;
+    const { idHabitacion } = req.params;
     const data = req.body;
-    console.log("Actualizando la habitacion con código: ", idUsuario);
+    console.log("Actualizando la habitacion con código: ", idHabitacion);
     try {
         const result = await sequelize.transaction( async t => {
             const habitaciones = await Habitacion.update(
                 data,
                 {
                     where: {
-                        codigo_habitacion: idUsuario
+                        codigo_habitacion: idHabitacion
                     },
                 },
                 {
@@ -107,11 +107,11 @@ export let actualizar = async (req, res) => {
             return habitaciones;
         });
         console.log(result);
-        if(result.length == 0){
+        if(result == 0){
             return res.status(404).json({ message: "Habitacion no encontrada" });
         }
         return res.status(200).json(
-            { message: "Se actualizó la habitacion con código " + idUsuario }
+            { message: "Se actualizó la habitacion con código " + idHabitacion }
         );
     } catch (error) {
         console.log(error);

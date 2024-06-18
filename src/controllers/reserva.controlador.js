@@ -24,7 +24,7 @@ export let crear = async (req, res) => {
             return reserva;
         });
         console.log(result);
-        return res.json(result);
+        return res.status(201).json(result);
     } catch (error) {
         console.log(error);
         return res.status(404).json(
@@ -49,10 +49,11 @@ export let listarInfo = async (req, res) => {
             return reservas;
         });
         console.log(result);
-        if(result.length == 0){
-            return res.status(404).json({ message: "Reserva no encontrada" });
+        if(result.length != 0){
+            return res.json(result);
         }
-        return res.json(result);
+        return res.status(404).json({ message: "Reserva no encontrada" });
+       
     } catch (error) {
         console.log(error);
         return res.status(404).json({ message: "Reserva no encontrada" });
@@ -81,6 +82,7 @@ export let borrar = async (req, res) => {
         return res.status(200).json(
             { message: "Se eliminó la reserva con código " + idReserva }
         );
+        
     } catch (error) {
         console.log(error);
         return res.status(404).json({ message: "Reserva no encontrada" });
@@ -113,6 +115,7 @@ export let actualizar = async (req, res) => {
             );
         }
         return res.status(404).json({ message: "Reserva no encontrada" });
+        
     } catch (error) {
         console.log(error);
         return res.status(404).json({ message: "Reserva no encontrada" });

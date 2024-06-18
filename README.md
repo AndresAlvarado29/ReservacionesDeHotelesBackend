@@ -196,3 +196,7 @@ Al inicio esto nos salio cuando lo ejecutamos por primera vez
 
 ![imagane el package.json](./imagenes/Screenshot%20from%202024-06-17%2022-50-48.png)
 
+Despues de corregir los errores queda asi la terminal 
+
+![imagane el package.json](./imagenes/Screenshot%20from%202024-06-18%2000-58-18.png)
+

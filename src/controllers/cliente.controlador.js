@@ -24,7 +24,7 @@ export let crear = async (req, res) => {
             return cliente;
         });
         console.log(result);
-        return res.json(result);
+        return res.status(201).json(result);
     } catch (error) {
         console.log(error);
         return res.status(404).json(
@@ -75,12 +75,13 @@ export let borrar = async (req, res) => {
             return clientes;
         });
         console.log(result);
-        if(result.length == 0){
-            return res.status(404).json({ message: "Cliente no encontrado" });
+        if(result != 0){
+            return res.status(200).json(
+                { message: "Se eliminó el cliente con código " + idCliente }
+            );
+            
         }
-        return res.status(200).json(
-            { message: "Se eliminó el cliente con código " + idCliente }
-        );
+        return res.status(404).json({ message: "Cliente no encontrado" });
     } catch (error) {
         console.log(error);
         return res.status(404).json({ message: "Cliente no encontrado" });
@@ -107,12 +108,13 @@ export let actualizar = async (req, res) => {
             return clientes;
         });
         console.log(result);
-        if(result.length == 0){
-            return res.status(404).json({ message: "Cliente no encontrado" });
+        if(result != 0){
+            return res.status(200).json(
+                { message: "Se actualizó el cliente con código " + idCliente }
+            );
         }
-        return res.status(200).json(
-            { message: "Se actualizó el cliente con código " + idCliente }
-        );
+        return res.status(404).json({ message: "Cliente no encontrado" });
+        
     } catch (error) {
         console.log(error);
         return res.status(404).json({ message: "Cliente no encontrado" });

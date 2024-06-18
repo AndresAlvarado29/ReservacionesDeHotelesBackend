@@ -2,6 +2,8 @@ import request from "supertest";
 import express from "express";
 import { clienteRouter } from "../src/routes/cliente.route.js";
 import { sequelize } from '../src/database/database.js';
+import { Usuario } from '../src/models/usuario.js';
+import { Cliente } from '../src/models/cliente.js';
 
 const app = express();
 app.use(express.json());
@@ -9,6 +11,13 @@ app.use('/api/clientes', clienteRouter);
 
 beforeAll(async () => {
     await sequelize.sync({ force: true });
+
+    // Crear un usuario para las pruebas
+    await Usuario.create({
+        usuario: "testuser",
+        clave: "testpassword",
+        email: "testuser@example.com"
+    });
 });
 
 afterAll(async () => {
@@ -33,7 +42,7 @@ describe("POST /api/clientes", () => {
             telefono: "0987654321",
             correo: "juan.perez@example.com",
             fecha_nacimiento: "1985-01-01",
-            usuario_codigo: 1
+            usuario_codigo: 1  // Asociado al usuario creado en beforeAll
         };
         const response = await request(app).post("/api/clientes").send(newCliente);
         expect(response.statusCode).toBe(201);
@@ -52,7 +61,7 @@ describe("GET /api/clientes/:idCliente", () => {
             telefono: "0987654322",
             correo: "maria.lopez@example.com",
             fecha_nacimiento: "1990-02-02",
-            usuario_codigo: 1
+            usuario_codigo: 1  // Asociado al usuario creado en beforeAll
         };
         const createdCliente = await request(app).post("/api/clientes").send(newCliente);
         const clienteId = createdCliente.body.codigo_cliente;
@@ -78,7 +87,7 @@ describe("PUT /api/clientes/:idCliente", () => {
             telefono: "0987654323",
             correo: "carlos.martinez@example.com",
             fecha_nacimiento: "1995-03-03",
-            usuario_codigo: 1
+            usuario_codigo: 1  // Asociado al usuario creado en beforeAll
         };
         const createdCliente = await request(app).post("/api/clientes").send(newCliente);
         const clienteId = createdCliente.body.codigo_cliente;
@@ -90,7 +99,7 @@ describe("PUT /api/clientes/:idCliente", () => {
             telefono: "0987654324",
             correo: "carlos.martinez_updated@example.com",
             fecha_nacimiento: "1995-03-03",
-            usuario_codigo: 1
+            usuario_codigo: 1  // Asociado al usuario creado en beforeAll
         };
         const response = await request(app).put(`/api/clientes/${clienteId}`).send(updatedCliente);
         expect(response.statusCode).toBe(200);
@@ -107,7 +116,7 @@ describe("PUT /api/clientes/:idCliente", () => {
             telefono: "0987654325",
             correo: "ana.gomez@example.com",
             fecha_nacimiento: "2000-04-04",
-            usuario_codigo: 1
+            usuario_codigo: 1  // Asociado al usuario creado en beforeAll
         });
         expect(response.statusCode).toBe(404);
         expect(response.body).toHaveProperty("message", "Cliente no encontrado");
@@ -124,7 +133,7 @@ describe("DELETE /api/clientes/:idCliente", () => {
             telefono: "0987654326",
             correo: "laura.fernandez@example.com",
             fecha_nacimiento: "2005-05-05",
-            usuario_codigo: 1
+            usuario_codigo: 1  // Asociado al usuario creado en beforeAll
         };
         const createdCliente = await request(app).post("/api/clientes").send(newCliente);
         const clienteId = createdCliente.body.codigo_cliente;

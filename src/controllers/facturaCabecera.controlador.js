@@ -24,7 +24,7 @@ export let crear = async (req, res) => {
             return factura;
         });
         console.log(result);
-        return res.json(result);
+        return res.status(201).json(result);
     } catch (error) {
         console.log(error);
         return res.status(404).json(
@@ -34,13 +34,13 @@ export let crear = async (req, res) => {
 };
 
 export let listarInfo = async (req, res) => {
-    const { idFactura } = req.params;
-    console.log('Buscando factura con código: ', idFactura);
+    const { idCabecera } = req.params;
+    console.log('Buscando factura con código: ', idCabecera);
     try {
         const result = await sequelize.transaction( async t => {
             const facturas = await FacturaCabecera.findAll({
                 where: {
-                    codigo_usuario: idFactura
+                    codigo_factura: idCabecera
                 },
             },
             {
@@ -60,13 +60,13 @@ export let listarInfo = async (req, res) => {
 };
 
 export let borrar = async (req, res) => {
-    const { idFactura } = req.params;
-    console.log('Borrando la factura con código: ', idFactura);
+    const { idCabecera } = req.params;
+    console.log('Borrando la factura con código: ', idCabecera);
     try {
         const result = await sequelize.transaction( async t => {
             const facturas = await FacturaCabecera.destroy({
                 where: {
-                    codigo_usuario: idFactura
+                    codigo_factura: idCabecera
                 },
             },
             {
@@ -75,11 +75,11 @@ export let borrar = async (req, res) => {
             return facturas;
         });
         console.log(result);
-        if(result.length == 0){
+        if(result === 0){
             return res.status(404).json({ message: "Factura no encontrado" });
         }
         return res.status(200).json(
-            { message: "Se eliminó la factura con código " + idFactura }
+            { message: "Se eliminó la factura con código " + idCabecera }
         );
     } catch (error) {
         console.log(error);
@@ -88,16 +88,16 @@ export let borrar = async (req, res) => {
 };
 
 export let actualizar = async (req, res) => {
-    const { idFactura } = req.params;
+    const { idCabecera } = req.params;
     const data = req.body;
-    console.log("Actualizando la factura con código: ", idFactura);
+    console.log("Actualizando la factura con código: ", idCabecera);
     try {
         const result = await sequelize.transaction( async t => {
             const facturas = await FacturaCabecera.update(
                 data,
                 {
                     where: {
-                        codigo_usuario: idFactura
+                        codigo_factura: idCabecera
                     },
                 },
                 {
@@ -107,12 +107,12 @@ export let actualizar = async (req, res) => {
             return facturas;
         });
         console.log(result);
-        if(result.length == 0){
-            return res.status(404).json({ message: "Factura no encontrado" });
+        if(result != 0){
+            return res.status(200).json(
+                { message: "Se actualizó la factura con código " + idCabecera }
+            );
         }
-        return res.status(200).json(
-            { message: "Se actualizó la factura con código " + idFactura }
-        );
+        return res.status(404).json({ message: "Factura no encontrado" });
     } catch (error) {
         console.log(error);
         return res.status(404).json({ message: "Factura no encontrado" });

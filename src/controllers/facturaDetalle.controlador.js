@@ -24,7 +24,7 @@ export let crear = async (req, res) => {
             return detalle;
         });
         console.log(result);
-        return res.json(result);
+        return res.status(201).json(result);
     } catch (error) {
         console.log(error);
         return res.status(404).json(
@@ -75,12 +75,13 @@ export let borrar = async (req, res) => {
             return detalles;
         });
         console.log(result);
-        if(result.length == 0){
-            return res.status(404).json({ message: "Detalle no encontrado" });
+        if(result != 0){
+            return res.status(200).json(
+                { message: "Se eliminó el detalle con código " + idDetalle }
+            );
         }
-        return res.status(200).json(
-            { message: "Se eliminó el detalle con código " + idDetalle }
-        );
+        return res.status(404).json({ message: "Detalle no encontrado" });
+        
     } catch (error) {
         console.log(error);
         return res.status(404).json({ message: "Detalle no encontrado" });
@@ -107,7 +108,7 @@ export let actualizar = async (req, res) => {
             return detalles;
         });
         console.log(result);
-        if(result.length == 0){
+        if(result == 0){
             return res.status(404).json({ message: "Detalle no encontrado" });
         }
         return res.status(200).json(
