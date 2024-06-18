@@ -35,14 +35,18 @@ Para crear el proyecto seguimos los siguientes pasos:
 
                    },
 
-7. creamos un archivo .env en la raíz del proyecto que contenga los siguientes campos (opcional):
+7. nodejs viene por defecto con CommonJS para poder usar ECMAScripts agregamos en el package.json, en la imagen a continuacion se podra ver como queda el package.json                    
+    
+        "type": "module"
+
+8. creamos un archivo .env en la raíz del proyecto que contenga los siguientes campos (opcional):
     - PORT
     - USER_DB
     - PASSWORD_DB
     - HOST_DB
     - DATABASE
     - PORT_DB
-8. ejecutamos
+9. ejecutamos
         
         npm run dev
 
@@ -133,3 +137,62 @@ Crear
 Listar con el nuevo cliente creado
 
 ![imagane el package.json](./imagenes/Screenshot%20from%202024-06-11%2021-43-21.png)
+
+
+**Testing**
+
+Para realizar el test vamos a usar jest y supertest 
+
+    npm install -D  jest supertest
+
+jest no reconoce el module por lo que hay que agregarle 
+    
+    set NODE_OPTIONS= --experimental-vm-modules && npx jest
+
+pero para no poner esto en consola y solo mandar a ejecutar le cambiamos en el package.json en la parte de "test" de la seccion scripts poniendo lo siguiente:
+
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest"
+
+en windows es:
+
+    "test": "set NODE_OPTIONS=--experimental-vm-modules && jest"
+    
+Despues de eso mandamos en la consola el comando para ejecutar para ver si funciona (va a dar error por no tener las pruebas)
+
+     npm test
+
+Captura de la primera ejecucion sin pruebas en los archivos 
+
+![imagane el package.json](./imagenes/Screenshot%20from%202024-06-17%2022-52-33.png)
+
+Ahora empezamos hacer las pruebas para cada clase
+
+**Cliente**
+
+![imagane el package.json](./imagenes/Screenshot%20from%202024-06-17%2022-45-25.png)
+
+**Factura Cabecera**
+
+![imagane el package.json](./imagenes/Screenshot%20from%202024-06-17%2022-45-36.png)
+
+**Factura Detalle**
+
+![imagane el package.json](./imagenes/Screenshot%20from%202024-06-17%2022-45-40.png)
+
+**Habitacion**
+
+![imagane el package.json](./imagenes/Screenshot%20from%202024-06-17%2022-45-45.png)
+
+**Reserva**
+
+![imagane el package.json](./imagenes/Screenshot%20from%202024-06-17%2022-45-49.png)
+
+**Usuario**
+
+![imagane el package.json](./imagenes/Screenshot%20from%202024-06-17%2022-45-52.png)
+
+
+Al inicio esto nos salio cuando lo ejecutamos por primera vez
+
+![imagane el package.json](./imagenes/Screenshot%20from%202024-06-17%2022-50-48.png)
+

@@ -40,3 +40,22 @@ npm install morgan
 
 para user un orm en este caso sequelize
 npm install sequelize pg pg-hstore
+
+para testear el backend descargamos jest y supertest 
+npm install -D  jest supertest
+
+para usar jest con modulos hay que poner
+
+windows
+
+set NODE_OPTIONS= --experimental-vm-modules && npx jest
+
+linux
+
+NODE_OPTIONS= --experimental-vm-modules npx jest
+
+para ejecutar sin poner la linea anterior hay que hacer cambio en el package json poniendo la linea 
+anterior en test de la parte script
+
+para ejecutar los test 
+ponemos npm test
